@@ -1,0 +1,2 @@
+export const RECEIVE_TWEETS = 'RECEIVE_TWEETS';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
