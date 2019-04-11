@@ -6,27 +6,37 @@ class Tweet extends Component {
 
     render() {
         const { tweet } = this.props;
-        const { name, avatar, timestamp, text } = tweet;
+        const {
+            name,
+            avatar,
+            timestamp,
+            text
+        } = tweet;
         return (
             <div className="tweet">
                 <img src={avatar} alt='teste' className="avatar" />
                 <div className="tweet-info">
-                    <span>{name}</span>
-                    <div>{formatDate(timestamp)}</div>
-                    <p>{text}</p>
+                    <div>
+                        <span>{name}</span>
+                        <div>{formatDate(timestamp)}</div>
+                        <p>{text}</p>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-function mapStateToProps({ users, tweets }, { id }) {
+function mapStateToProps({ authedUser, users, tweets }, { id }) {
     const tweet = tweets[id];
+    const parentTweet = tweet ? tweets[tweet.replyingTo] : null;
+
     return {
-        tweet: formatTweet(tweet, users[tweet.author])
+        authedUser,
+        tweet: tweet
+            ? formatTweet(tweet, users[tweet.author], authedUser, parentTweet)
+            : null
     };
 }
 
-
 export default connect(mapStateToProps)(Tweet);
-

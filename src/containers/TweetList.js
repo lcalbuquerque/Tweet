@@ -12,7 +12,7 @@ class TweetList extends Component {
     render() {
         return (
             <div>
-                <h3 className="container">Your Timeline</h3>
+                <h3 className="center">Your Timeline</h3>
                 <ul>
                     {
                         this.props.tweetsMap.map(id => (
