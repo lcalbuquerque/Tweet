@@ -19,7 +19,6 @@ export function handleAddTweet(tweet) {
     return (dispatch, getState) => {
         const { authedUser } = getState();
         const { text } = tweet;
-        console.log(text);
         return saveTweet({
             text,
             author: authedUser

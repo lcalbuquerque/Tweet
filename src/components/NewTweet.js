@@ -4,23 +4,23 @@ import { handleAddTweet } from '../store/actions/tweets';
 
 class NewTweet extends Component {
     state = {
-        textoTweet: ""
+        text: ""
     };
 
     handleChange = e => {
         const textDigitado = e.target.value;
         this.setState(() => ({
-            textoTweet: textDigitado
+            text: textDigitado
         }));
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        const { textoTweet } = this.state;
+        const { text } = this.state;
         const { dispatch, id } = this.props;
-        dispatch(handleAddTweet({ textoTweet, id }));
+        dispatch(handleAddTweet({ text, id }));
         this.setState(() => ({
-            textoTweet: ""
+            text: ""
         }));
         // In case of NewTweet, id is undefined and go to /
         if (!id) this.props.history.push('/')
@@ -28,18 +28,18 @@ class NewTweet extends Component {
 
 render() {
 
-        const { textoTweet } = this.state;
-        const charLeft = 280 - textoTweet.length;
+        const { text } = this.state;
+        const charLeft = 280 - text.length;
 
         return (
             <div>
                 <h3 className="center">Compose New Tweet</h3>
                 <form className="new-tweet" onSubmit={this.handleSubmit}>
                     <textarea placeholder="What's happening?"
-                        value={textoTweet} onChange={this.handleChange}
+                        value={text} onChange={this.handleChange}
                         className="textarea" maxLength={280} />
                     {charLeft <= 100 && <div className="tweet-length">{charLeft}</div>}
-                    <button className="btn" type="submit" disabled={!textoTweet.length}>
+                    <button className="btn" type="submit" disabled={!text.length}>
                         Submit
                     </button>
                 </form>
