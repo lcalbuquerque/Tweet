@@ -26,7 +26,7 @@ class NewTweet extends Component {
         if (!id) this.props.history.push('/')
     };
 
-render() {
+    render() {
 
         const { text } = this.state;
         const charLeft = 280 - text.length;

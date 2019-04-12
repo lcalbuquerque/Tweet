@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Tweet from './Tweet';
-import { handleInitialData } from '../store/actions/shared';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Tweet from './Tweet'
+import { handleInitialData } from '../store/actions/shared'
 
 class TweetList extends Component {
 

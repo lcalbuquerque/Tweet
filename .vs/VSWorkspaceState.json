@@ -3,10 +3,13 @@
     "",
     "\\src",
     "\\src\\components",
+    "\\src\\containers",
+    "\\src\\middleware",
+    "\\src\\store",
     "\\src\\store\\actions",
     "\\src\\store\\reducers",
     "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\utils\\_DATA.js",
+  "SelectedNode": "\\src\\store\\actions\\shared.js",
   "PreviewInSolutionExplorer": false
 }
