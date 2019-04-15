@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes'
 import { saveTweet, saveLikeToggle } from '../../utils/api'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export function receiveTweets(tweets) {
     return {
@@ -17,13 +18,17 @@ function addTweet(tweet) {
 
 export function handleAddTweet(tweet) {
     return (dispatch, getState) => {
+        dispatch(showLoading('sectionBar'));
         const { authedUser } = getState();
         const { text } = tweet;
         return saveTweet({
             text,
             author: authedUser
         })
-            .then(tweet => dispatch(addTweet(tweet)))
+            .then(tweet => {
+                dispatch(addTweet(tweet))
+                dispatch(hideLoading('sectionBar'));
+            })
     };
 }
 
@@ -35,7 +40,8 @@ export function handleToggleLike(info) {
     }
 
     return dispatch => {
-        saveLikeToggle(info).then(() => { dispatch(like); })
+        saveLikeToggle(info)
+            .then(() => { dispatch(like); })
             .catch(error => { alert("Error: " + error.message); });
     };
 }
