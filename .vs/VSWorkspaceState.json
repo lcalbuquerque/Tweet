@@ -4,12 +4,10 @@
     "\\src",
     "\\src\\components",
     "\\src\\containers",
-    "\\src\\middleware",
-    "\\src\\store",
     "\\src\\store\\actions",
     "\\src\\store\\reducers",
     "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\store\\actions\\shared.js",
+  "SelectedNode": "\\src\\components\\NewTweet.js",
   "PreviewInSolutionExplorer": false
 }

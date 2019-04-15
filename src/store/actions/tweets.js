@@ -27,20 +27,15 @@ export function handleAddTweet(tweet) {
     };
 }
 
-function toggleTweet({ id, authedUser, hasLiked }) {
-    return {
-        type: actionTypes.TOGGLE_TWEET,
-        id,
-        authedUser,
-        hasLiked
-    };
-}
+export function handleToggleLike(info) {
+    // ...info = { id, authedUser, hasLiked }
+    const like = {
+        type: actionTypes.TOGGLE_LIKE,
+        ...info
+    }
 
-export function handleToggleTweet(info) {
     return dispatch => {
-        saveLikeToggle(info).then(() => { dispatch(toggleTweet(info)); })
-            .catch(error => {
-                alert("Error: " + error.message);
-            });
+        saveLikeToggle(info).then(() => { dispatch(like); })
+            .catch(error => { alert("Error: " + error.message); });
     };
 }

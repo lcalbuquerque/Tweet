@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import TweetList from '../containers/TweetList'
 import BarraNaveg from './BarraNaveg'
-import NewTweet from './NewTweet'
+import NewTweet from '../containers/NewTweet'
 
 class App extends Component {
 

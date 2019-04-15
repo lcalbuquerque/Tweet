@@ -15,7 +15,7 @@ export default function tweets(state = {}, action) {
                 [tweet.id]: tweet
             };
 
-        case actionTypes.TOGGLE_TWEET:
+        case actionTypes.TOGGLE_LIKE:
             return {
                 ...state,
                 [action.id]: {

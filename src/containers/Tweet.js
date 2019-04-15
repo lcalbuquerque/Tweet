@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { formatTweet, formatDate } from '../utils/helpers'
 import { connect } from 'react-redux'
 import { TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti/'
-import { handleToggleTweet } from '../store/actions/tweets'
+import { handleToggleLike } from '../store/actions/tweets'
 
 class Tweet extends Component {
 
@@ -10,7 +10,7 @@ class Tweet extends Component {
         e.preventDefault();
         const { dispatch, tweet, authedUser } = this.props;
         dispatch(
-            handleToggleTweet({
+            handleToggleLike({
                 id: tweet.id,
                 authedUser: authedUser,
                 hasLiked: tweet.hasLiked
@@ -49,11 +49,12 @@ class Tweet extends Component {
 
 function mapStateToProps({ authedUser, users, tweets }, { id }) {
     const tweet = tweets[id];
+    const parentTweet = tweet ? tweets[tweet.replyingTo] : null;
 
     return {
         authedUser,
         tweet: tweet ?
-            formatTweet(tweet, users[tweet.author], authedUser)
+            formatTweet(tweet, users[tweet.author], authedUser, parentTweet)
             : null
     };
 }
