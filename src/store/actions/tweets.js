@@ -11,7 +11,7 @@ export function receiveTweets(tweets) {
 
 function addTweet(tweet) {
     return {
-        type: actionTypes.ADD_TWEET,
+        type: actionTypes.NEW_TWEET,
         tweet
     };
 }
@@ -20,10 +20,11 @@ export function handleAddTweet(tweet) {
     return (dispatch, getState) => {
         dispatch(showLoading('sectionBar'));
         const { authedUser } = getState();
-        const { text } = tweet;
+        const { text, id } = tweet;
         return saveTweet({
             text,
-            author: authedUser
+            author: authedUser,
+            replyingTo: id
         })
             .then(tweet => {
                 dispatch(addTweet(tweet))
@@ -42,6 +43,6 @@ export function handleToggleLike(info) {
     return dispatch => {
         saveLikeToggle(info)
             .then(() => { dispatch(like); })
-            .catch(error => { alert("Error: " + error.message); });
+            .catch(error => { alert('Error: ' + error.message); });
     };
 }

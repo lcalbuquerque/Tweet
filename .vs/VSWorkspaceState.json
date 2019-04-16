@@ -4,10 +4,12 @@
     "\\src",
     "\\src\\components",
     "\\src\\containers",
+    "\\src\\middleware",
+    "\\src\\store",
     "\\src\\store\\actions",
     "\\src\\store\\reducers",
     "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\components\\NewTweet.js",
+  "SelectedNode": "\\src\\containers\\Tweet.js",
   "PreviewInSolutionExplorer": false
 }
