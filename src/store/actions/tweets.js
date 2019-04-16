@@ -30,6 +30,7 @@ export function handleAddTweet(tweet) {
                 dispatch(addTweet(tweet))
                 dispatch(hideLoading('sectionBar'));
             })
+            .catch(error => { alert('Error: ' + error.message); })
     };
 }
 

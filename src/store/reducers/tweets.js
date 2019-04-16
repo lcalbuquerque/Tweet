@@ -11,6 +11,7 @@ export default function tweets(state = {}, action) {
         case actionTypes.NEW_TWEET:
             const { tweet } = action;
             let replyingTo = {};
+            // If is a Reply, full replyingTo and replies
             if (tweet.replyingTo !== null) {
                 replyingTo = {
                     [tweet.replyingTo]: {
