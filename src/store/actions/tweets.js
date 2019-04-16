@@ -30,8 +30,11 @@ export function handleAddTweet(tweet) {
                 dispatch(addTweet(tweet))
                 dispatch(hideLoading('sectionBar'));
             })
-            .catch(error => { alert('Error: ' + error.message); })
-    };
+            .catch((e) => {
+                console.warn('Error in handleAddTweet: ', e);
+                alert('Ocorreu um erro ao incluir novo tweet. Tente novamente. ')
+            });
+    }
 }
 
 export function handleToggleLike(info) {
@@ -44,6 +47,9 @@ export function handleToggleLike(info) {
     return dispatch => {
         saveLikeToggle(info)
             .then(() => { dispatch(like); })
-            .catch(error => { alert('Error: ' + error.message); });
-    };
+            .catch((e) => {
+                console.warn('Error in handleToggleTweet: ', e);
+                alert('Ocorreu um erro ao curtir o tweet. Tente novamente. ')
+            });
+    }
 }
